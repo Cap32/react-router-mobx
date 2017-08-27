@@ -13,15 +13,14 @@ If you wanna push url from `http://aweso.me/search?q=hello&page=4` to `http://aw
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import qs from 'qs';
+import myStore from './stores/myStore';
 
 @withRouter
-@inject('myStore')
 @observer
 export default class MyApp extends Component {
   static propTypes = {
-    myStore: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
   };
@@ -40,7 +39,7 @@ export default class MyApp extends Component {
   };
 
   render() {
-    const { location, myStore } = this.props;
+    const { location } = this.props;
     const { page } = qs.parse(location.search ? location.search.slice(1) : '');
     return (
       <div>
@@ -58,19 +57,15 @@ export default class MyApp extends Component {
 ```js
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
+import myStore from './stores/myStore';
+import routerStore from './stores/routerStore';
 
-@inject('myStore', 'routerStore')
 @observer
 export default class MyApp extends Component {
-  static propTypes = {
-    myStore: PropTypes.object.isRequired,
-    routerStore: PropTypes.object.isRequired,
-  };
-
   goToNextPage = (ev) => {
     ev.preventDefault();
-    const { location } = this.props.routerStore;
+    const { location } = routerStore;
     location.query = {
       ...location.query,
       page: 1 + location.query.page,
@@ -78,7 +73,6 @@ export default class MyApp extends Component {
   };
 
   render() {
-    const { routerStore, myStore } = this.props;
     const { page } = routerStore.location.query;
     return (
       <div>
@@ -86,6 +80,45 @@ export default class MyApp extends Component {
         <p>Page: {page || 1}</p>
         <button onClick={this.goToNextPage}>Next</button>
       </div>
+    );
+  }
+}
+```
+
+
+## Installation
+
+```bash
+yarn add react-router-mobx
+```
+
+You should install all the peer dependencies if you haven't installed them:
+
+```bash
+yarn add react mobx mobx-react react-router-dom
+```
+
+If you are using React Native, please install `react-router-native` instead of `react-router-dom`.
+
+
+## Usage
+
+1. Use react-router-mobx `Router` instead of react-router `Router`
+2. Pass a `RouterStore` instance and react-router `Router` component to `Router` component:
+
+```js
+import React, { Component } from 'react';
+import { Router, RouterStore } from 'react-router-mobx';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+const routerStore = new RouterStore();
+
+export default class App extends Component {
+  render() {
+    return (
+      <Router component={BrowserRouter} routerStore={routerStore}>
+        <Route {...someRouteConfigs} />
+      </Router>
     );
   }
 }
