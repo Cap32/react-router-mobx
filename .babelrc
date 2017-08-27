@@ -1,0 +1,29 @@
+{
+	"presets": [
+		"react",
+		"stage-0",
+	],
+	"plugins": [
+		"transform-decorators-legacy",
+	],
+	"env": {
+		"cjs": {
+			"presets": [
+				"es2015",
+				"stage-0",
+			],
+			"plugins": [
+				"transform-decorators-legacy",
+			],
+		},
+		"es": {
+			"presets": [
+				["es2015", { "modules": false }],
+				"stage-0",
+			],
+			"plugins": [
+				"transform-decorators-legacy",
+			],
+		},
+	}
+}
