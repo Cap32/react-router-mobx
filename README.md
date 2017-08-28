@@ -1,5 +1,7 @@
 # react-router-mobx
 
+[![Build Status](https://travis-ci.org/Cap32/react-router-mobx.svg?branch=master)](https://travis-ci.org/Cap32/react-router-mobx) [![License](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat)](https://github.com/Cap32/react-router-mobx/blob/master/LICENSE.md)
+
 React Router meets MobX
 
 ## Table of Contents
