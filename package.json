@@ -1,7 +1,7 @@
 {
   "name": "react-router-mobx",
   "version": "0.0.0",
-  "description": "react-router meets mobx",
+  "description": "React Router meets MobX",
   "repository": "Cap32/react-router-mobx",
   "scripts": {
     "start": "npm test -- --watchAll",
@@ -28,6 +28,17 @@
   "jsnext:main": "es/index.js",
   "author": "Cap32",
   "license": "MIT",
+  "keywords": [
+    "mobx",
+    "react",
+    "router",
+    "react-router",
+    "observable",
+    "query",
+    "location",
+    "history",
+    "querystring"
+  ],
   "dependencies": {
     "prop-types": "^15.5.7",
     "qs": "^6.5.0"
@@ -81,8 +92,7 @@
     ],
     "modulePathIgnorePatterns": [
       "node_modules",
-      "lib",
-      "utils"
+      "lib"
     ]
   }
 }
