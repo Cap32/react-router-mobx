@@ -6,7 +6,6 @@
   "scripts": {
     "start": "npm test -- --watchAll",
     "test": "cross-env BABEL_ENV=cjs jest",
-    "coverage": "npm test -- --coverage",
     "rimraf": "rimraf ./dist ./lib ./es",
     "mkdir": "mkdirp ./dist ./lib ./es",
     "prebuild": "run-s rimraf mkdir",
@@ -63,7 +62,6 @@
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^20.0.4",
-    "jsdom": "^9.11.0",
     "lodash.camelcase": "^4.3.0",
     "mkdirp": "^0.5.1",
     "mobx": "^3.2.2",

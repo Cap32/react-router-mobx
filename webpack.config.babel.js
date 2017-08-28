@@ -68,7 +68,6 @@ module.exports = (webpackEnv = {}) => {
 		},
 	};
 
-
 	if (minify) {
 		config.plugins.push(
 			new webpack.optimize.UglifyJsPlugin(),
