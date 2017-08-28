@@ -2,6 +2,29 @@
 
 React Router meets MobX
 
+## Table of Contents
+
+<!-- MarkdownTOC autolink="true" bracket="round" -->
+
+- [Features](#features)
+- [WTF](#wtf)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+  - [RouterStore](#routerstore)
+  - [Router](#router)
+  - [setQueryString\(queryString\)](#setquerystringquerystring)
+- [License](#license)
+
+<!-- /MarkdownTOC -->
+
+
+## Features
+
+- `location` and `match` are observable
+- Built-in `query` object to `location`
+- Super easy to push/update new URL, pathname, hash, search or query
+
 
 ## WTF
 
@@ -127,7 +150,7 @@ export default class App extends Component {
 
 ## API Reference
 
-#### RouterStore
+### RouterStore
 
 The MobX store class that contains some router properties and methods.
 
@@ -151,7 +174,7 @@ Just like react-router `match` object, but it is observable and mutable.
 Just like react-router `history` object.
 
 
-#### Router
+### Router
 
 The low-level api router component instead of react-router `Router` component.
 
@@ -161,6 +184,14 @@ The low-level api router component instead of react-router `Router` component.
 - component (ReactComponent): Defining the react router component, e.g. `BrowserRouter`, `MemoryRouter`, `NativeRouter`, etc. Defaults to react-router `Router` component
 - history (Object): You can also define a custom history object, just like react-router `Router` component
 - All properties in react-router `Router` are supported
+
+### setQueryString(queryString)
+
+Setting a custom `queryString` library.
+
+###### Arguments
+
+1. queryString (Object): Custom `queryString` library, which should contain `parse(object)` and `stringify(object)` methods
 
 
 ## License
