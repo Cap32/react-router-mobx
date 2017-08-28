@@ -125,6 +125,44 @@ export default class App extends Component {
 ```
 
 
+## API Reference
+
+#### RouterStore
+
+The MobX store class that contains some router properties and methods.
+
+###### RouterStore#location
+
+A little bits like react-router `location` object which contains `key`, `pathname`, `search`, `hash`, `state`. But there are several differences:
+
+- Prividing `query` object, just like react-router v3 or below
+- All properties are observable and mutable
+- Could push URL by passing new location or properties, just like `window.location`
+  + Push a new URL: `routerStore.location = '/foo?say=hello'`
+  + Push a new `pathname`, i.e. from `/foo?say=hello` to `/bar?say=hello`: `routerStore.location.pathname = '/bar'`
+  + Push a new `search`, i.e. from `/foo?say=hello` to `/foo?say=world`: `routerStore.location.query = { say: 'world' }` or `routerStore.location.search = '?say=world'`
+
+###### RouterStore#match
+
+Just like react-router `match` object, but it is observable and mutable.
+
+###### RouterStore#history
+
+Just like react-router `history` object.
+
+
+#### Router
+
+The low-level api router component instead of react-router `Router` component.
+
+###### Props
+
+- routerStore (RouterStore): Defining a `RouterStore` instance to store or update `location` and `match` state
+- component (ReactComponent): Defining the react router component, e.g. `BrowserRouter`, `MemoryRouter`, `NativeRouter`, etc. Defaults to react-router `Router` component
+- history (Object): You can also define a custom history object, just like react-router `Router` component
+- All properties in react-router `Router` are supported
+
+
 ## License
 
 MIT
