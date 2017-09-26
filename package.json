@@ -1,7 +1,7 @@
 {
   "name": "react-router-mobx",
   "version": "0.0.0",
-  "description": "React Router meets MobX",
+  "description": "when react-router meets mobx: observable router and location",
   "repository": "Cap32/react-router-mobx",
   "scripts": {
     "start": "npm test -- --watch",

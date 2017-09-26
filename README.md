@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Cap32/react-router-mobx.svg?branch=master)](https://travis-ci.org/Cap32/react-router-mobx) [![Coverage Status](https://coveralls.io/repos/github/Cap32/react-router-mobx/badge.svg?branch=master)](https://coveralls.io/github/Cap32/react-router-mobx?branch=master) [![License](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat)](https://github.com/Cap32/react-router-mobx/blob/master/LICENSE.md)
 
-React Router meets MobX
+When [React Router](https://reacttraining.com/react-router/) meets [MobX](https://mobx.js.org/): observable router and location.
 
 ## Table of Contents
 
@@ -177,6 +177,14 @@ A little bits like react-router `location` object which contains `key`, `pathnam
 
 Just like react-router `history` object.
 
+###### RouterStore#push(loc, state)
+
+Like react-router `history.push(loc, state)`, but the `loc` param supports to be an object that contains a `query` object.
+
+###### RouterStore#replace(loc, state)
+
+Like react-router `history.replace(loc, state)`, but the `loc` param supports to be an object that contains a `query` object.
+
 
 <a name="router"></a>
 ### Router
@@ -199,6 +207,13 @@ Setting a custom `queryString` library.
 
 1. queryString (Object): Custom `queryString` library, which should contain `parse(object)` and `stringify(object)` methods
 
+###### Example
+
+```js
+import { setQueryString } from 'react-router-mobx';
+import { parse, stringify } from 'qs';
+setQueryString({ parse, stringify });
+```
 
 <a name="license"></a>
 ## License
