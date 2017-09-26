@@ -1,6 +1,6 @@
 # react-router-mobx
 
-[![Build Status](https://travis-ci.org/Cap32/react-router-mobx.svg?branch=master)](https://travis-ci.org/Cap32/react-router-mobx) [![License](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat)](https://github.com/Cap32/react-router-mobx/blob/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/Cap32/react-router-mobx.svg?branch=master)](https://travis-ci.org/Cap32/react-router-mobx) [![Coverage Status](https://coveralls.io/repos/github/Cap32/react-router-mobx/badge.svg?branch=master)](https://coveralls.io/github/Cap32/react-router-mobx?branch=master) [![License](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat)](https://github.com/Cap32/react-router-mobx/blob/master/LICENSE.md)
 
 React Router meets MobX
 
