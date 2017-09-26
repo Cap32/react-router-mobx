@@ -21,13 +21,15 @@ React Router meets MobX
 <!-- /MarkdownTOC -->
 
 
+<a name="features"></a>
 ## Features
 
-- `location` and `match` are observable
-- Built-in `query` object to `location`
+- `location` are observable
+- Built-in `query` observable object to `location`
 - Super easy to push/update new URL, pathname, hash, search or query
 
 
+<a name="wtf"></a>
 ## WTF
 
 If you wanna push url from `http://aweso.me/search?q=hello&page=4` to `http://aweso.me/search?q=hello&page=5`, you may need:
@@ -111,6 +113,7 @@ export default class MyApp extends Component {
 ```
 
 
+<a name="installation"></a>
 ## Installation
 
 ```bash
@@ -126,6 +129,7 @@ yarn add react mobx mobx-react react-router-dom
 If you are using React Native, please install `react-router-native` instead of `react-router-dom`.
 
 
+<a name="usage"></a>
 ## Usage
 
 1. Use react-router-mobx `Router` instead of react-router `Router`
@@ -150,8 +154,10 @@ export default class App extends Component {
 ```
 
 
+<a name="api-reference"></a>
 ## API Reference
 
+<a name="routerstore"></a>
 ### RouterStore
 
 The MobX store class that contains some router properties and methods.
@@ -167,26 +173,24 @@ A little bits like react-router `location` object which contains `key`, `pathnam
   + Push a new `pathname`, i.e. from `/foo?say=hello` to `/bar?say=hello`: `routerStore.location.pathname = '/bar'`
   + Push a new `search`, i.e. from `/foo?say=hello` to `/foo?say=world`: `routerStore.location.query = { say: 'world' }` or `routerStore.location.search = '?say=world'`
 
-###### RouterStore#match
-
-Just like react-router `match` object, but it is observable and mutable.
-
 ###### RouterStore#history
 
 Just like react-router `history` object.
 
 
+<a name="router"></a>
 ### Router
 
 The low-level api router component instead of react-router `Router` component.
 
 ###### Props
 
-- routerStore (RouterStore): Defining a `RouterStore` instance to store or update `location` and `match` state
+- routerStore (RouterStore): Defining a `RouterStore` instance to store or update `location` state
 - component (ReactComponent): Defining the react router component, e.g. `BrowserRouter`, `MemoryRouter`, `NativeRouter`, etc. Defaults to react-router `Router` component
 - history (Object): You can also define a custom history object, just like react-router `Router` component
 - All properties in react-router `Router` are supported
 
+<a name="setquerystringquerystring"></a>
 ### setQueryString(queryString)
 
 Setting a custom `queryString` library.
@@ -196,6 +200,7 @@ Setting a custom `queryString` library.
 1. queryString (Object): Custom `queryString` library, which should contain `parse(object)` and `stringify(object)` methods
 
 
+<a name="license"></a>
 ## License
 
 MIT
