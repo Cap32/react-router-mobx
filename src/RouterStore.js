@@ -1,5 +1,5 @@
 
-import { observable, computed } from 'mobx';
+import { observable, computed, autorun, extendObservable } from 'mobx';
 import { parse, stringify } from './queryString';
 
 const stripQuery = (loc) => {
@@ -14,81 +14,51 @@ const stripQuery = (loc) => {
 	return loc;
 };
 
-class LocationData {
-	@observable pathname = '/';
-	@observable search = '?';
-	@observable hash = '';
-	@observable state = {};
-}
-
-class LocationStore {
-	constructor(routerStore, location, history) {
-		this.__routerStore = routerStore;
-		this._data = new LocationData();
-
-		const update = (loc) => {
-			Object.assign(this._data, loc);
-		};
-
-		update(location);
-		history.listen(update);
-	}
-
-	@computed get pathname() {
-		return this._data.pathname;
-	}
-	set pathname(pathname) {
-		this.__routerStore.push({ pathname });
-		return pathname;
-	}
-
-	@computed get search() {
-		return this._data.search;
-	}
-	set search(search) {
-		this.__routerStore.push({ search });
-		return search;
-	}
-
-	@computed get hash() {
-		return this._data.hash;
-	}
-	set hash(hash) {
-		this.__routerStore.push({ hash });
-		return hash;
-	}
-
-	@computed get state() {
-		return this._data.state;
-	}
-	set state(state) {
-		this.__routerStore.push({ state });
-		return state;
-	}
-
-	@computed get query() {
-		return parse((this._data.search || '').slice(1));
-	}
-	set query(query) {
-		const queryString = stringify(query);
-		this.search = queryString && `?${queryString}`;
-		return query;
-	}
-}
-
 export default class RouterStore {
-	@observable _location = { query: {} };
+	_prevLoc = {};
 
-	@computed get location() {
-		return this._location;
-	}
-	set location(loc) {
-		this.push(loc);
-	}
+	@observable location = {};
 
 	__initial({ location, history }) {
-		this._location = observable(new LocationStore(this, location, history));
+		class Loc {
+			@computed get query() {
+				return parse(this.search.slice(1));
+			}
+			set query(query) {
+				const queryString = stringify(query);
+				this.search = queryString && `?${queryString}`;
+				return query;
+			}
+
+			constructor(loc) {
+				extendObservable(this, loc);
+			}
+		}
+
+		this.location = new Loc(location);
+		this._prevLoc = location;
+
 		this.history = history;
+
+		history.listen((location) => {
+			if (typeof this.location === 'string') {
+				this.location = new Loc({});
+			}
+			this.location.pathname = location.pathname;
+			this.location.search = location.search;
+			this.location.hash = location.hash;
+			this._prevLoc = location;
+		});
+
+		autorun(() => {
+			if (typeof this.location === 'string' ||
+				this.location.search !== this._prevLoc.search ||
+				this.location.hash !== this._prevLoc.hash ||
+				this.location.pathname !== this._prevLoc.pathname
+			) {
+				this.push(this.location);
+			}
+		});
 	}
 
 	push(loc, state) {
