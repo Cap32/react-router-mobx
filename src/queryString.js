@@ -1,9 +1,9 @@
 
-import qs from 'qs';
+import * as qs from 'tiny-querystring';
 
 const queryString = {
-	stringify: (query) => qs.stringify(query, { addQueryPrefix: true }),
-	parse: (search) => qs.parse(search, { ignoreQueryPrefix: true }),
+	stringify: qs.stringify,
+	parse: qs.parse,
 };
 
 export function stringify(object) {

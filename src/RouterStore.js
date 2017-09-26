@@ -5,9 +5,10 @@ import { parse, stringify } from './queryString';
 const stripQuery = (loc) => {
 	if (loc.query) {
 		const { search, query, ...other } = loc;
+		const queryString = stringify(query);
 		return {
 			...other,
-			search: stringify(query),
+			search: queryString && `?${queryString}`,
 		};
 	}
 	return loc;
@@ -66,7 +67,7 @@ class LocationStore {
 	}
 
 	@computed get query() {
-		return parse(this._data.search);
+		return parse(this._data.search.slice(1));
 	}
 	set query(query) {
 		this.search = stringify(query);

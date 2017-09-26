@@ -3821,9 +3821,9 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "http://registry.npm.taobao.org/punycode/download/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-qs@^6.5.0:
-  version "6.5.0"
-  resolved "http://registry.npm.taobao.org/qs/download/qs-6.5.0.tgz#8d04954d364def3efc55b5a0793e1e2c8b1e6e49"
+qs@^6.5.1:
+  version "6.5.1"
+  resolved "http://registry.npm.taobao.org/qs/download/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
 qs@~6.3.0:
   version "6.3.0"
@@ -4448,6 +4448,10 @@ timers-browserify@^2.0.2:
   resolved "http://registry.npm.taobao.org/timers-browserify/download/timers-browserify-2.0.2.tgz#ab4883cf597dcd50af211349a00fbca56ac86b86"
   dependencies:
     setimmediate "^1.0.4"
+
+tiny-querystring@^0.0.0:
+  version "0.0.0"
+  resolved "http://registry.npm.taobao.org/tiny-querystring/download/tiny-querystring-0.0.0.tgz#e05d146ca69b474e4af3afaa08e7bf22bc9ded3a"
 
 tmp@^0.0.31:
   version "0.0.31"
