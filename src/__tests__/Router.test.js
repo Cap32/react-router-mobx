@@ -18,17 +18,11 @@ describe('Router', () => {
 	it('should initial routerStore', (done) => {
 		const routerStore = {
 			__initial(props) {
-				const { location, history, match } = props;
+				const { location, history } = props;
 				expect(location).toMatchObject({
 					pathname: '/',
 					search: '',
 					hash: '',
-				});
-				expect(match).toEqual({
-					path: '/',
-					url: '/',
-					params: {},
-					isExact: true,
 				});
 				expect(typeof history.push).toBe('function');
 				expect(typeof history.replace).toBe('function');
