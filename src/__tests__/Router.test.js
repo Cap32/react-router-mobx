@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import Router from '../Router';
+import { Router } from '../index';
 import { MemoryRouter } from 'react-router';
 
 describe('Router', () => {

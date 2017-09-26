@@ -1,5 +1,5 @@
 
-import RouterStore from '../RouterStore';
+import { RouterStore } from '../index';
 import { isObservable, autorun } from 'mobx';
 
 describe('RouterStore', () => {

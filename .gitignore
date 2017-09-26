@@ -7,8 +7,9 @@ ehthumbs.db
 Thumbs.db
 .log
 *.log
-logs
-node_modules
-dist
-lib
-es
+logs/
+node_modules/
+dist/
+lib/
+es/
+coverage/

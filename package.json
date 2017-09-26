@@ -4,8 +4,8 @@
   "description": "React Router meets MobX",
   "repository": "Cap32/react-router-mobx",
   "scripts": {
-    "start": "npm test -- --watchAll",
-    "test": "cross-env BABEL_ENV=cjs jest",
+    "start": "npm test -- --watch",
+    "test": "cross-env BABEL_ENV=cjs jest --coverage",
     "rimraf": "rimraf ./dist ./lib ./es",
     "mkdir": "mkdirp ./dist ./lib ./es",
     "prebuild": "run-s rimraf mkdir",
