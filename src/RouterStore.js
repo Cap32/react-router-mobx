@@ -67,17 +67,17 @@ class LocationStore {
 	}
 
 	@computed get query() {
-		return parse(this._data.search.slice(1));
+		return parse((this._data.search || '').slice(1));
 	}
 	set query(query) {
-		this.search = stringify(query);
+		const queryString = stringify(query);
+		this.search = queryString && `?${queryString}`;
 		return query;
 	}
 }
 
 export default class RouterStore {
 	@observable _location = { query: {} };
-	@observable match = {};
 
 	@computed get location() {
 		return this._location;
@@ -86,14 +86,9 @@ export default class RouterStore {
 		this.push(loc);
 	}
 
-	__initial({ location, history, match }) {
-		this.match = match;
+	__initial({ location, history }) {
 		this._location = observable(new LocationStore(this, location, history));
 		this.history = history;
-	}
-
-	__setMatch(match) {
-		this.match = match;
 	}
 
 	push(loc, state) {

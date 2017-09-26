@@ -8,19 +8,12 @@ class RouterMobX extends Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		routerStore: PropTypes.object.isRequired,
-		match: PropTypes.object.isRequired,
 		history: PropTypes.object.isRequired,
 		location: PropTypes.object.isRequired,
 	};
 
 	componentWillMount() {
 		this.props.routerStore.__initial(this.props);
-	}
-
-	componentWillReceiveProps({ match }) {
-		if (this.props.match !== match) {
-			this.props.routerStore.__setMatch(match);
-		}
 	}
 
 	render() {
