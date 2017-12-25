@@ -4474,9 +4474,9 @@ timers-browserify@^2.0.2:
   dependencies:
     setimmediate "^1.0.4"
 
-tiny-querystring@^0.0.0:
-  version "0.0.0"
-  resolved "http://registry.npm.taobao.org/tiny-querystring/download/tiny-querystring-0.0.0.tgz#e05d146ca69b474e4af3afaa08e7bf22bc9ded3a"
+tiny-querystring@^0.0.2:
+  version "0.0.2"
+  resolved "http://registry.npm.taobao.org/tiny-querystring/download/tiny-querystring-0.0.2.tgz#a7aa2f7ba3988e2cc4c0b04752c95ba654438f60"
 
 tmp@^0.0.31:
   version "0.0.31"

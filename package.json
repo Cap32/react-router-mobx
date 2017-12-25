@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "prop-types": "^15.5.7",
-    "tiny-querystring": "^0.0.0"
+    "tiny-querystring": "^0.0.2"
   },
   "peerDependencies": {
     "mobx": "^3.0.0",
