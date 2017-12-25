@@ -1,7 +1,7 @@
 
 import PropTypes from 'prop-types';
 import React, { Component, Children } from 'react';
-import { withRouter, Router as ReactRouter } from 'react-router';
+import { withRouter, Router as ReactRouter } from 'react-router-dom';
 
 @withRouter
 class RouterMobX extends Component {

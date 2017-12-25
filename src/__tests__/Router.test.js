@@ -1,8 +1,11 @@
 
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { configure, mount, shallow } from 'enzyme';
 import { Router } from '../index';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 describe('Router', () => {
 	it('should component work', () => {
