@@ -47,7 +47,7 @@
   "peerDependencies": {
     "mobx": "^3.0.0",
     "react": "^0.14.0 || ^15.0.0",
-    "react-router": "^4.0.0"
+    "react-router-dom": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -83,7 +83,6 @@
     "qs": "^6.5.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^15.6.1",
     "rimraf": "^2.5.4",
