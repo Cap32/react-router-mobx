@@ -1,5 +1,3 @@
 module.exports = {
-	'extends': [
-		'cantonjs',
-	],
+	extends: ['cantonjs/react'],
 };
