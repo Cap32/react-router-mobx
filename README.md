@@ -1,6 +1,9 @@
 # react-router-mobx
 
-[![Build Status](https://travis-ci.org/Cap32/react-router-mobx.svg?branch=master)](https://travis-ci.org/Cap32/react-router-mobx) [![Coverage Status](https://coveralls.io/repos/github/Cap32/react-router-mobx/badge.svg?branch=master)](https://coveralls.io/github/Cap32/react-router-mobx?branch=master) [![License](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat)](https://github.com/Cap32/react-router-mobx/blob/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/Cap32/react-router-mobx.svg?branch=master)](https://travis-ci.org/Cap32/react-router-mobx)
+[![Coverage Status](https://coveralls.io/repos/github/Cap32/react-router-mobx/badge.svg?branch=master)](https://coveralls.io/github/Cap32/react-router-mobx?branch=master)
+[![npm version](https://badge.fury.io/js/react-router-mobx.svg)](https://badge.fury.io/js/react-router-mobx)
+[![License](https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat)](https://github.com/Cap32/react-router-mobx/blob/master/LICENSE.md)
 
 When [React Router](https://reacttraining.com/react-router/) meets [MobX](https://mobx.js.org/): observable router and location.
 
@@ -20,16 +23,16 @@ When [React Router](https://reacttraining.com/react-router/) meets [MobX](https:
 
 <!-- /MarkdownTOC -->
 
-
 <a name="features"></a>
+
 ## Features
 
-- `location` are observable
-- Built-in `query` observable object to `location`
-- Super easy to push/update new URL, pathname, hash, search or query
-
+* `location` are observable
+* Built-in `query` observable object to `location`
+* Super easy to push/update new URL, pathname, hash, search or query
 
 <a name="wtf"></a>
+
 ## WTF
 
 If you wanna push url from `http://aweso.me/search?q=hello&page=4` to `http://aweso.me/search?q=hello&page=5`, you may need:
@@ -58,10 +61,12 @@ export default class MyApp extends Component {
     const query = qs.parse(location.search ? location.search.slice(1) : '');
     history.push({
       ...location,
-      search: '?' + qs.stringify({
-        ...query,
-        page: 1 + query.page,
-      }),
+      search:
+        '?' +
+        qs.stringify({
+          ...query,
+          page: 1 + query.page,
+        }),
     });
   };
 
@@ -112,8 +117,8 @@ export default class MyApp extends Component {
 }
 ```
 
-
 <a name="installation"></a>
+
 ## Installation
 
 ```bash
@@ -128,8 +133,8 @@ yarn add react mobx mobx-react react-router-dom
 
 If you are using React Native, please install `react-router-native` instead of `react-router-dom`.
 
-
 <a name="usage"></a>
+
 ## Usage
 
 1. Use react-router-mobx `Router` instead of react-router `Router`
@@ -153,11 +158,12 @@ export default class App extends Component {
 }
 ```
 
-
 <a name="api-reference"></a>
+
 ## API Reference
 
 <a name="routerstore"></a>
+
 ### RouterStore
 
 The MobX store class that contains some router properties and methods.
@@ -166,12 +172,12 @@ The MobX store class that contains some router properties and methods.
 
 A little bits like react-router `location` object which contains `key`, `pathname`, `search`, `hash`, `state`. But there are several differences:
 
-- Prividing `query` object, just like react-router v3 or below
-- All properties are observable and mutable
-- Could push URL by passing new location or properties, just like `window.location`
-  + Push a new URL: `routerStore.location = '/foo?say=hello'`
-  + Push a new `pathname`, i.e. from `/foo?say=hello` to `/bar?say=hello`: `routerStore.location.pathname = '/bar'`
-  + Push a new `search`, i.e. from `/foo?say=hello` to `/foo?say=world`: `routerStore.location.query = { say: 'world' }` or `routerStore.location.search = '?say=world'`
+* Prividing `query` object, just like react-router v3 or below
+* All properties are observable and mutable
+* Could push URL by passing new location or properties, just like `window.location`
+  * Push a new URL: `routerStore.location = '/foo?say=hello'`
+  * Push a new `pathname`, i.e. from `/foo?say=hello` to `/bar?say=hello`: `routerStore.location.pathname = '/bar'`
+  * Push a new `search`, i.e. from `/foo?say=hello` to `/foo?say=world`: `routerStore.location.query = { say: 'world' }` or `routerStore.location.search = '?say=world'`
 
 ###### RouterStore#history
 
@@ -185,20 +191,21 @@ Like react-router `history.push(loc, state)`, but the `loc` param supports to be
 
 Like react-router `history.replace(loc, state)`, but the `loc` param supports to be an object that contains a `query` object.
 
-
 <a name="router"></a>
+
 ### Router
 
 The low-level api router component instead of react-router `Router` component.
 
 ###### Props
 
-- routerStore (RouterStore): Defining a `RouterStore` instance to store or update `location` state
-- component (ReactComponent): Defining the react router component, e.g. `BrowserRouter`, `MemoryRouter`, `NativeRouter`, etc. Defaults to react-router `Router` component
-- history (Object): You can also define a custom history object, just like react-router `Router` component
-- All properties in react-router `Router` are supported
+* routerStore (RouterStore): Defining a `RouterStore` instance to store or update `location` state
+* component (ReactComponent): Defining the react router component, e.g. `BrowserRouter`, `MemoryRouter`, `NativeRouter`, etc. Defaults to react-router `Router` component
+* history (Object): You can also define a custom history object, just like react-router `Router` component
+* All properties in react-router `Router` are supported
 
 <a name="setquerystringquerystring"></a>
+
 ### setQueryString(queryString)
 
 Setting a custom `queryString` library.
@@ -216,6 +223,7 @@ setQueryString({ parse, stringify });
 ```
 
 <a name="license"></a>
+
 ## License
 
 MIT
