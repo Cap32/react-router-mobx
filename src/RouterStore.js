@@ -1,4 +1,4 @@
-import { observable, computed, autorun, extendObservable } from 'mobx';
+import { observable, computed } from 'mobx';
 import { parse, stringify } from './queryString';
 
 const stripQuery = (loc) => {
