@@ -1,4 +1,3 @@
-
 import { observable, computed, autorun, extendObservable } from 'mobx';
 import { parse, stringify } from './queryString';
 
@@ -17,47 +16,79 @@ const stripQuery = (loc) => {
 export default class RouterStore {
 	_prevLoc = {};
 
-	@observable location = {};
+	@observable _location = {};
+
+	@computed
+	get location() {
+		return this._location;
+	}
+	set location(location) {
+		this.push(location);
+		return true;
+	}
 
 	__initial({ location, history }) {
 		class Loc {
-			@computed get query() {
-				return parse(this.search.slice(1));
+			@observable _search = '';
+			@observable _hash = '';
+			@observable _pathname = '';
+			@observable state = {};
+
+			@computed
+			get query() {
+				return parse(this._search.slice(1));
 			}
 			set query(query) {
 				const queryString = stringify(query);
 				this.search = queryString && `?${queryString}`;
-				return query;
+				return true;
 			}
 
-			constructor(loc) {
-				extendObservable(this, loc);
+			@computed
+			get search() {
+				return this._search;
+			}
+			set search(search) {
+				this._wrapper.push({ search });
+				return true;
+			}
+
+			@computed
+			get hash() {
+				return this._hash;
+			}
+			set hash(hash) {
+				this._wrapper.push({ hash });
+				return true;
+			}
+
+			@computed
+			get pathname() {
+				return this._pathname;
+			}
+			set pathname(pathname) {
+				this._wrapper.push({ pathname });
+				return true;
+			}
+
+			constructor(wrapper, loc) {
+				this._wrapper = wrapper;
+				this._search = loc.search;
+				this._path = loc.path;
+				this._hash = loc.hash;
+				this._state = loc.state;
 			}
 		}
 
-		this.location = new Loc(location);
+		this.history = history;
+		this._location = new Loc(this, location);
 		this._prevLoc = location;
 
-		this.history = history;
-
 		history.listen((location) => {
-			if (typeof this.location === 'string') {
-				this.location = new Loc({});
-			}
-			this.location.pathname = location.pathname;
-			this.location.search = location.search;
-			this.location.hash = location.hash;
+			this._location._pathname = location.pathname;
+			this._location._search = location.search;
+			this._location._hash = location.hash;
 			this._prevLoc = location;
-		});
-
-		autorun(() => {
-			if (typeof this.location === 'string' ||
-				this.location.search !== this._prevLoc.search ||
-				this.location.hash !== this._prevLoc.hash ||
-				this.location.pathname !== this._prevLoc.pathname
-			) {
-				this.push(this.location);
-			}
 		});
 	}
 

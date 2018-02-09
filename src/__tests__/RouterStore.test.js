@@ -1,4 +1,3 @@
-
 import { RouterStore } from '../index';
 import { isObservable, autorun } from 'mobx';
 import url from 'url';
@@ -17,7 +16,9 @@ describe('RouterStore', () => {
 		routerStore = new RouterStore();
 		history = {
 			push: jest.fn((loc) => {
-				if (typeof loc === 'string') { loc = url.parse(loc); }
+				if (typeof loc === 'string') {
+					loc = url.parse(loc);
+				}
 				loc.search = loc.search || '';
 				loc.hash = loc.hash || '';
 				loc.pathname = loc.pathname || '/';
