@@ -14,8 +14,6 @@ const stripQuery = (loc) => {
 };
 
 export default class RouterStore {
-	_prevLoc = {};
-
 	@observable _location = {};
 
 	@computed
@@ -82,13 +80,11 @@ export default class RouterStore {
 
 		this.history = history;
 		this._location = new Loc(this, location);
-		this._prevLoc = location;
 
 		history.listen((location) => {
 			this._location._pathname = location.pathname;
 			this._location._search = location.search;
 			this._location._hash = location.hash;
-			this._prevLoc = location;
 		});
 	}
 
