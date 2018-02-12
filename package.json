@@ -4,7 +4,7 @@
   "description": "when react-router meets mobx: observable router and location",
   "repository": "Cap32/react-router-mobx",
   "scripts": {
-    "start": "npm test -- --watch",
+    "start": "yarn test --watchAll",
     "test": "cross-env BABEL_ENV=cjs jest --coverage",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "format": "prettier-eslint --write \"src/**/*.js\"",
@@ -16,7 +16,7 @@
     "build:umd": "cross-env NODE_ENV=production webpack",
     "build:min": "cross-env NODE_ENV=production webpack --env.minify",
     "build": "run-p build:*",
-    "preversion": "npm test && npm run build"
+    "preversion": "yarn test && yarn run build"
   },
   "files": [
     "README.md",
