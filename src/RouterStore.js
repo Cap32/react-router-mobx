@@ -1,5 +1,6 @@
 import { observable, computed } from 'mobx';
 import Location from './Location';
+import createHistory from './createHistory';
 import { stringify } from './queryString';
 
 const stripQuery = (loc) => {
@@ -27,14 +28,8 @@ export default class RouterStore {
 	}
 
 	__initial({ location, history }) {
-		this.history = history;
+		this.history = createHistory(this, history);
 		this._location = new Location(this, location);
-
-		history.listen((location) => {
-			this._location._pathname = location.pathname;
-			this._location._search = location.search;
-			this._location._hash = location.hash;
-		});
 	}
 
 	push(loc, state) {

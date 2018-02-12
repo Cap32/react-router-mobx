@@ -47,7 +47,7 @@ export default class Location {
 	constructor(wrapper, loc) {
 		this._wrapper = wrapper;
 		this._search = loc.search;
-		this._path = loc.path;
+		this._pathname = loc.pathname;
 		this._hash = loc.hash;
 		this._state = loc.state;
 	}
