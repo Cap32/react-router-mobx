@@ -23,7 +23,6 @@ When [React Router](https://reacttraining.com/react-router/) meets [MobX](https:
 
 <!-- /MarkdownTOC -->
 
-<a name="features"></a>
 
 ## Features
 
@@ -31,7 +30,6 @@ When [React Router](https://reacttraining.com/react-router/) meets [MobX](https:
 * Built-in `query` observable object to `location`
 * Super easy to push/update new URL, pathname, hash, search or query
 
-<a name="wtf"></a>
 
 ## WTF
 
@@ -117,7 +115,6 @@ export default class MyApp extends Component {
 }
 ```
 
-<a name="installation"></a>
 
 ## Installation
 
@@ -133,7 +130,6 @@ yarn add react mobx mobx-react react-router-dom
 
 If you are using React Native, please install `react-router-native` instead of `react-router-dom`.
 
-<a name="usage"></a>
 
 ## Usage
 
@@ -158,11 +154,9 @@ export default class App extends Component {
 }
 ```
 
-<a name="api-reference"></a>
 
 ## API Reference
 
-<a name="routerstore"></a>
 
 ### RouterStore
 
@@ -181,7 +175,15 @@ A little bits like react-router `location` object which contains `key`, `pathnam
 
 ###### RouterStore#history
 
-Just like react-router `history` object.
+Just like react-router `history` object, except for `history.listen`:
+
+```js
+history.listen((location, prevLocation, action) => {
+  console.log(`The current URL is ${location.pathname}${location.search}${location.hash}`);
+  console.log(`The previous URL is ${prevLocation.pathname}${prevLocation.search}${prevLocation.hash}`);
+});
+```
+
 
 ###### RouterStore#push(loc, state)
 
@@ -191,7 +193,6 @@ Like react-router `history.push(loc, state)`, but the `loc` param supports to be
 
 Like react-router `history.replace(loc, state)`, but the `loc` param supports to be an object that contains a `query` object.
 
-<a name="router"></a>
 
 ### Router
 
@@ -204,7 +205,6 @@ The low-level api router component instead of react-router `Router` component.
 * history (Object): You can also define a custom history object, just like react-router `Router` component
 * All properties in react-router `Router` are supported
 
-<a name="setquerystringquerystring"></a>
 
 ### setQueryString(queryString)
 
@@ -222,7 +222,6 @@ import { parse, stringify } from 'qs';
 setQueryString({ parse, stringify });
 ```
 
-<a name="license"></a>
 
 ## License
 
