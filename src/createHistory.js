@@ -1,7 +1,7 @@
 export default function createHistory(wrapper, history) {
 	const listen = history.listen.bind(history);
 	const listeners = [];
-	listen((location) => {
+	listen((location, action) => {
 		const { _location } = wrapper;
 		const prevLocation = {
 			pathname: _location._pathname,
@@ -12,7 +12,7 @@ export default function createHistory(wrapper, history) {
 		_location._search = location.search;
 		_location._hash = location.hash;
 		for (const listener of listeners) {
-			listener(_location, prevLocation);
+			listener(_location, prevLocation, action);
 		}
 	});
 	history.listen = function listen(listener) {
