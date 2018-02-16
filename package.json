@@ -1,6 +1,6 @@
 {
   "name": "react-router-mobx",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "when react-router meets mobx: observable router and location",
   "repository": "Cap32/react-router-mobx",
   "scripts": {
