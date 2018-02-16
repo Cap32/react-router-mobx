@@ -7,6 +7,7 @@ export default function createHistory(wrapper, history) {
 			pathname: _location._pathname,
 			search: _location._search,
 			hash: _location._hash,
+			query: _location.query,
 		};
 		_location._pathname = location.pathname;
 		_location._search = location.search;

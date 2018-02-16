@@ -16,13 +16,14 @@ describe('createHistory', () => {
 		const history = createHistory(wrapper, originalHistory);
 		wrapper._location = new Location(wrapper, {
 			pathname: 'foo',
+			search: '?',
 		});
 
 		const mockListener = jest.fn();
 		history.listen(mockListener);
 
 		for (const listener of listeners) {
-			const newLocation = { pathname: 'bar' };
+			const newLocation = { pathname: 'bar', search: '?' };
 			listener(newLocation);
 		}
 
@@ -45,13 +46,14 @@ describe('createHistory', () => {
 		const history = createHistory(wrapper, originalHistory);
 		wrapper._location = new Location(wrapper, {
 			pathname: 'foo',
+			search: '?',
 		});
 
 		const mockListener = jest.fn();
 		const removeListener = history.listen(mockListener);
 
 		for (const listener of listeners) {
-			const newLocation = { pathname: 'bar' };
+			const newLocation = { pathname: 'bar', search: '?' };
 			listener(newLocation);
 		}
 
