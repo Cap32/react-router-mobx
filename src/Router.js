@@ -11,8 +11,9 @@ class RouterMobX extends Component {
 		location: PropTypes.object.isRequired,
 	};
 
-	componentWillMount() {
-		this.props.routerStore.__initial(this.props);
+	constructor(props) {
+		super(props);
+		props.routerStore.__initial(props);
 	}
 
 	render() {
