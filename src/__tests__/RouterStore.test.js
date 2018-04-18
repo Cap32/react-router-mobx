@@ -1,5 +1,5 @@
 import { RouterStore } from '../index';
-import { isObservable, autorun } from 'mobx';
+import { isObservableProp, autorun } from 'mobx';
 import url from 'url';
 
 describe('RouterStore', () => {
@@ -43,9 +43,9 @@ describe('RouterStore', () => {
 	});
 
 	test('should location observable', () => {
-		expect(isObservable(routerStore.location, 'pathname')).toBe(true);
-		expect(isObservable(routerStore.location, 'search')).toBe(true);
-		expect(isObservable(routerStore.location, 'hash')).toBe(true);
+		expect(isObservableProp(routerStore.location, 'pathname')).toBe(true);
+		expect(isObservableProp(routerStore.location, 'search')).toBe(true);
+		expect(isObservableProp(routerStore.location, 'hash')).toBe(true);
 	});
 
 	test('should routerStore.location.hash work', () => {
