@@ -1,6 +1,6 @@
 {
 	"name": "react-router-mobx",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "when react-router meets mobx: observable router and location",
 	"repository": "Cap32/react-router-mobx",
 	"scripts": {
@@ -18,7 +18,13 @@
 		"build": "run-p build:*",
 		"preversion": "yarn test && yarn run build"
 	},
-	"files": ["README.md", "LICENSE.md", "lib", "es", "dist"],
+	"files": [
+		"README.md",
+		"LICENSE.md",
+		"lib",
+		"es",
+		"dist"
+	],
 	"main": "lib/index.js",
 	"module": "es/index.js",
 	"jsnext:main": "es/index.js",
@@ -76,7 +82,12 @@
 		"webpack": "^3.1.0"
 	},
 	"jest": {
-		"collectCoverageFrom": ["src/**/*.js"],
-		"modulePathIgnorePatterns": ["node_modules", "lib"]
+		"collectCoverageFrom": [
+			"src/**/*.js"
+		],
+		"modulePathIgnorePatterns": [
+			"node_modules",
+			"lib"
+		]
 	}
 }
