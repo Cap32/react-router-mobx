@@ -49,28 +49,28 @@ describe('RouterStore', () => {
 	});
 
 	test('should routerStore.location.hash work', () => {
-		expect(history.push.mock.calls.length).toBe(0);
+		expect(history.push).toHaveBeenCalledTimes(0);
 		routerStore.location.hash = '#hello';
 		expect(routerStore.location.hash).toBe('#hello');
-		expect(history.push.mock.calls.length).toBe(1);
+		expect(history.push).toHaveBeenCalledTimes(1);
 	});
 
 	test('should routerStore.location.search work', () => {
-		expect(history.push.mock.calls.length).toBe(0);
+		expect(history.push).toHaveBeenCalledTimes(0);
 		routerStore.location.search = '?foo=bar';
 		expect(routerStore.location.search).toBe('?foo=bar');
-		expect(history.push.mock.calls.length).toBe(1);
+		expect(history.push).toHaveBeenCalledTimes(1);
 	});
 
 	test('should routerStore.location.pathname work', () => {
-		expect(history.push.mock.calls.length).toBe(0);
+		expect(history.push).toHaveBeenCalledTimes(0);
 		routerStore.location.pathname = '/hello';
 		expect(routerStore.location.pathname).toBe('/hello');
-		expect(history.push.mock.calls.length).toBe(1);
+		expect(history.push).toHaveBeenCalledTimes(1);
 	});
 
 	test('should routerStore.location.query work', () => {
-		expect(history.push.mock.calls.length).toBe(0);
+		expect(history.push).toHaveBeenCalledTimes(0);
 		routerStore.location.query = {
 			...routerStore.location.query,
 			foo: 'bar',
@@ -79,21 +79,21 @@ describe('RouterStore', () => {
 			foo: 'bar',
 			hello: 'world',
 		});
-		expect(history.push.mock.calls.length).toBe(1);
+		expect(history.push).toHaveBeenCalledTimes(1);
 	});
 
 	test('should update routerStore.location work', () => {
-		expect(history.push.mock.calls.length).toBe(0);
+		expect(history.push).toHaveBeenCalledTimes(0);
 		routerStore.location = '/a';
 		expect(routerStore.location.pathname).toBe('/a');
-		expect(history.push.mock.calls.length).toBe(1);
+		expect(history.push).toHaveBeenCalledTimes(1);
 	});
 
 	test('should push work', () => {
-		expect(history.push.mock.calls.length).toBe(0);
+		expect(history.push).toHaveBeenCalledTimes(0);
 		routerStore.push({ query: { hello: 'world' } });
 		expect(routerStore.location.query).toEqual({ hello: 'world' });
-		expect(history.push.mock.calls.length).toBe(1);
+		expect(history.push).toHaveBeenCalledTimes(1);
 	});
 
 	test('should replace work', () => {

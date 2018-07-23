@@ -4,7 +4,7 @@
 	"description": "when react-router meets mobx: observable router and location",
 	"repository": "Cap32/react-router-mobx",
 	"scripts": {
-		"start": "yarn test --watchAll",
+		"watch": "yarn test --watchAll",
 		"test": "cross-env BABEL_ENV=cjs jest --coverage",
 		"coverage": "cat ./coverage/lcov.info | coveralls",
 		"format": "prettier-eslint --write \"src/**/*.js\"",
@@ -18,13 +18,7 @@
 		"build": "run-p build:*",
 		"preversion": "yarn test && yarn run build"
 	},
-	"files": [
-		"README.md",
-		"LICENSE.md",
-		"lib",
-		"es",
-		"dist"
-	],
+	"files": ["README.md", "LICENSE.md", "lib", "es", "dist"],
 	"main": "lib/index.js",
 	"module": "es/index.js",
 	"jsnext:main": "es/index.js",
@@ -46,7 +40,7 @@
 		"tiny-querystring": "^0.0.2"
 	},
 	"peerDependencies": {
-		"mobx": "^3.0.0 || ^4.0.0",
+		"mobx": "^3.0.0 || ^4.0.0 || ^5.0.0",
 		"react": "^0.14.0 || ^15.0.0 || ^16.0.0",
 		"react-router-dom": "^4.0.0"
 	},
@@ -70,8 +64,8 @@
 		"jest": "^22.0.4",
 		"lodash.camelcase": "^4.3.0",
 		"mkdirp": "^0.5.1",
-		"mobx": "^4.2.0",
-		"mobx-react": "^5.0.0",
+		"mobx": "^5.0.3",
+		"mobx-react": "^5.2.3",
 		"npm-run-all": "^4.0.2",
 		"prettier-eslint-cli": "^4.7.0",
 		"qs": "^6.5.1",
@@ -82,12 +76,7 @@
 		"webpack": "^3.1.0"
 	},
 	"jest": {
-		"collectCoverageFrom": [
-			"src/**/*.js"
-		],
-		"modulePathIgnorePatterns": [
-			"node_modules",
-			"lib"
-		]
+		"collectCoverageFrom": ["src/**/*.js"],
+		"modulePathIgnorePatterns": ["node_modules", "lib"]
 	}
 }
