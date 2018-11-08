@@ -20,6 +20,7 @@ When [React Router](https://reacttraining.com/react-router/) meets [MobX](https:
   - [RouterStore](#routerstore)
   - [Router](#router)
   - [setQueryString(queryString)](#setquerystringquerystring)
+- [match](#match)
 - [Versioning](#versioning)
 - [License](#license)
 
@@ -220,6 +221,10 @@ import { setQueryString } from "react-router-mobx";
 import { parse, stringify } from "qs";
 setQueryString({ parse, stringify });
 ```
+
+## match
+
+Please note that routerStore doesn't provide a `match` prop, if you need `match`, you may also use `withRouter` or `<Route>` from `react-router`. Checkout [match](https://reacttraining.com/react-router/web/api/match) for detail.
 
 ## Versioning
 
